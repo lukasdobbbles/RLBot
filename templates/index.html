@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roblox Bedwars Training</title>
+</head>
+<body>
+    <h1>Roblox Bedwars Training</h1>
+    <div>
+        {% if training %}
+            <p>Training is currently running.</p>
+            <a href="{{ url_for('stop_training') }}"><button>Stop Training</button></a>
+        {% else %}
+            <p>Training is not running.</p>
+            <a href="{{ url_for('start_training') }}"><button>Start Training</button></a>
+        {% endif %}
+    </div>
+</body>
+</html>

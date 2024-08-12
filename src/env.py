@@ -67,7 +67,7 @@ class RobloxBedwars(gymnasium.Env):
         self.get_observation = None
         while self.calculate_reward_poll is None or self.take_action_poll is not None or not self.get_observation:
             continue
-        done = self.get_observation['my_health'] == 0 or self.get_observation['their_health'] == 0
+        done = self.observation_space['their_health'] == 0
         truncated = False
         reward = self.calculate_reward_poll
         observation = self.get_observation

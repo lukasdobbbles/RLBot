@@ -26,7 +26,7 @@ def create_env(i):
     return _init
 
 def make_envs(num_envs=4):
-    return SubprocVecEnv([create_env(i) for i in range(num_envs)])
+    return SubprocVecEnv([create_env(i) for i in range(num_envs)], start_method='spawn')
 
 @app.get("/poll/<player>")
 def poll(player):
@@ -40,6 +40,7 @@ def poll(player):
         }  # do nothing until envs initialized
 
     env_idx = int(player) - 1
+    print(envs.get_attr('reset_character', env_idx)[0])
     requesting = {
         'reset_character': envs.get_attr('reset_character', env_idx)[0],
         'calculate_reward_poll': not envs.get_attr('calculate_reward_poll', env_idx)[0],

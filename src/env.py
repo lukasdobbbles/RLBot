@@ -49,6 +49,7 @@ class RobloxBedwars(gymnasium.Env):
         self.reset_character = True
         self.get_observation = None
         while self.reset_character and not self.get_observation:
+            print('stuck in reset loop')
             continue
         observation = self.get_observation
         info = {}

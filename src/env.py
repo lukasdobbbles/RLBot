@@ -66,6 +66,7 @@ class RobloxBedwars(gymnasium.Env):
         })
         self.get_observation = None
         while self.calculate_reward_poll is None or self.take_action_poll is not None or not self.get_observation:
+            print('waiting for step to complete')
             continue
         done = self.observation_space['their_health'] == 0
         truncated = False
@@ -74,6 +75,7 @@ class RobloxBedwars(gymnasium.Env):
         return observation, reward, done, truncated, {}
 
     def poll_callback(self, data):
+        print(data)
         if data['calculate_reward_poll'] is not False:
             self.calculate_reward_poll = data['calculate_reward_poll']
         if data['reset_character']:

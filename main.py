@@ -40,7 +40,7 @@ def poll(player):
         }  # do nothing until envs initialized
 
     env_idx = int(player) - 1
-    print(envs.get_attr('reset_character', env_idx)[0])
+    print( envs.get_attr('reset_character', env_idx))
     requesting = {
         'reset_character': envs.get_attr('reset_character', env_idx)[0],
         'calculate_reward_poll': not envs.get_attr('calculate_reward_poll', env_idx)[0],
